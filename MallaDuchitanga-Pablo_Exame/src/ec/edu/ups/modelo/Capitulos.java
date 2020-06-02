@@ -1,11 +1,25 @@
 package ec.edu.ups.modelo;
 
-public class Capitulos {
+import java.io.Serializable;
+
+import javax.persistence.CascadeType;
+import javax.persistence.Entity;
+import javax.persistence.Id;
+import javax.persistence.ManyToOne;
+import javax.persistence.OneToOne;
+
+@Entity
+public class Capitulos implements Serializable {
+	
+	@Id
 	private String codigo;
 	private int numero;
 	private String titulo;
-	private Autor autor;
+	@ManyToOne
+	private Libro libro;
 	
+	@OneToOne(mappedBy = "capitulos", cascade = CascadeType.ALL, orphanRemoval = true)
+	private Autor autor;
 	
 	
 	public Capitulos() {

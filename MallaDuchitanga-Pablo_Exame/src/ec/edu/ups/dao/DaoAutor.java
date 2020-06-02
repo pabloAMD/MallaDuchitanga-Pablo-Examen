@@ -1,15 +1,8 @@
 package ec.edu.ups.dao;
+import ec.edu.ups.modelo.Autor;
 
-public class DaoAutor {
+public interface DaoAutor extends GenericDao<Autor, String> {
 
-	protected static DaoFactory factory = new JPADAOFactory();
-
-	public static DaoFactory getFactory() {
-		return factory;
-	}
-
-
-	public abstract DaoUsuario getUsuarioDAO();
-
-	public abstract DaoTelefono getTelefonoDAO();
+	public abstract Autor findUsuario(String nombre);
+	
 }

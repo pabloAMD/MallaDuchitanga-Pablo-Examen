@@ -1,9 +1,31 @@
 package ec.edu.ups.modelo;
 
-public class Autor {
+import java.io.Serializable;
+
+import javax.annotation.Generated;
+import javax.persistence.Entity;
+import javax.persistence.GeneratedValue;
+import javax.persistence.GenerationType;
+import javax.persistence.Id;
+import javax.persistence.JoinColumn;
+import javax.persistence.OneToMany;
+import javax.persistence.OneToOne;
+
+@Entity
+public class Autor implements Serializable {
+	
+	private static final long serialVersionUID = 1L;
+	
+	@Id
+	@GeneratedValue(strategy = GenerationType.IDENTITY)
 	private String codigo;
-	private String nombre;
+	private String nombre;	
 	private String nacionalidad;
+	@OneToOne
+	@JoinColumn
+	private Capitulos capitulos;
+	
+	
 	
 	
 	public Autor() {

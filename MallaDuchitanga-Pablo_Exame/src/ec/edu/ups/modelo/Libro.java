@@ -1,12 +1,32 @@
 package ec.edu.ups.modelo;
 
-public class Libro {
+import java.io.Serializable;
+import java.util.ArrayList;
+import java.util.List;
+
+import javax.persistence.CascadeType;
+import javax.persistence.Column;
+import javax.persistence.Entity;
+import javax.persistence.GeneratedValue;
+import javax.persistence.GenerationType;
+import javax.persistence.Id;
+import javax.persistence.OneToMany;
+
+@Entity
+public class Libro implements Serializable {
 	
+	private static final long serialVersionUID = 1L;
+	
+	@Id
+	@GeneratedValue(strategy = GenerationType.IDENTITY)
 	private String codigo;
 	private String nombre;
+	@Column(unique = true)
 	private String isbn;
+	
 	private int numpag;
-	private Capitulos capitulos;
+	@OneToMany(mappedBy = "libro", cascade = CascadeType.ALL, orphanRemoval = true)
+	private List<Capitulos> capitulos;
 	
 	public Libro() {
 		
@@ -14,17 +34,14 @@ public class Libro {
 	
 	
 	
-
-	public Libro(String codigo, String nombre, String isbn, int numpag, Capitulos capitulos) {
+	public Libro(String nombre, String isbn, int numpag) {
 		super();
 		this.codigo = codigo;
 		this.nombre = nombre;
 		this.isbn = isbn;
 		this.numpag = numpag;
-		this.capitulos = capitulos;
+		this.capitulos= new ArrayList<Capitulos>();
 	}
-
-
 
 
 	public String getCodigo() {
@@ -58,6 +75,20 @@ public class Libro {
 	public void setNumpag(int numpag) {
 		this.numpag = numpag;
 	}
+	
+	
+
+	public List<Capitulos> getCapitulos() {
+		return capitulos;
+	}
+
+
+
+	public void setCapitulos(List<Capitulos> capitulos) {
+		this.capitulos = capitulos;
+	}
+
+
 
 	@Override
 	public int hashCode() {
