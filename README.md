@@ -24,7 +24,7 @@ Mediante el metodo se mostraran los libros, luego de realizar una búsqueda por 
 
 # Razones por que no se termino el examen
 
-- Las tablas no se crearon dentro de la base de datos ha excepción de Capitulos, pero se tienen implentados todos los métodos que utilizaremos para cumplir con las instrucciones.
+- Las tablas no se crearon dentro de la base de datos ha excepción de tabla Capitulos, pero se tienen implentados todos los métodos que utilizaremos para cumplir con las instrucciones. 
 
 
 
